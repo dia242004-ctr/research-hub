@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tata Capital — Equity Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF2F9;--panel:#FFFFFF;--panel2:#F6F8FC;--line:#D7DEEC;
+    --accent:#1A56A8;--accent2:#0A84C9;--ink:#16203B;--dim:#586289;--faint:#97A0BC;
+    --green:#0E9E73;--red:#DC2626;--amber:#C2710C;--purple:#7C3AED;
+    --disp:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;
+    background-image:radial-gradient(circle at 12% 6%,rgba(26,86,168,.08),transparent 42%);background-attachment:fixed}
+  .mono{font-family:var(--mono)}
+  a{color:inherit}
+  /* top bar */
+  header.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .back{text-decoration:none;color:var(--dim);font-family:var(--mono);font-size:12px;letter-spacing:.5px;transition:.15s}
+  .back:hover{color:var(--accent)}
+  .top h1{font-family:var(--disp);font-size:20px;font-weight:700}
+  .tk{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(26,86,168,.1);padding:3px 9px;border-radius:20px}
+  nav.sub{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+  nav.sub a{text-decoration:none;font-size:12.5px;color:var(--dim);padding:5px 11px;border-radius:8px;transition:.15s;font-weight:500}
+  nav.sub a:hover{background:var(--panel2);color:var(--accent)}
+  .wrap{max-width:1000px;margin:0 auto;padding:34px 26px 70px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase}
+  h2.sec{font-family:var(--disp);font-size:26px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em;scroll-margin-top:70px}
+  .sec-tag{color:var(--dim);font-size:14px;margin-bottom:18px}
+  section{padding:30px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  p{margin-bottom:12px;font-size:15px}
+  .lead{font-weight:600;color:var(--accent)}
+  b{color:var(--ink)}
+  ul{margin:0 0 12px 20px}li{font-size:14.5px;margin-bottom:6px}
+  /* hero */
+  .hero{padding:40px 0 20px}
+  .hero h0,.hero .big{font-family:var(--disp)}
+  .hero .big{font-size:46px;font-weight:700;letter-spacing:-.02em;line-height:1.02}
+  .hero .big .pop{color:var(--accent)}
+  .thesis{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin-top:18px;font-size:15px;line-height:1.6}
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .stat .v{font-family:var(--disp);font-size:21px;font-weight:700;color:var(--accent)}
+  .stat .l{font-size:11.5px;color:var(--dim);margin-top:2px}
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 8px;background:var(--panel);border-radius:10px;overflow:hidden}
+  th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--accent);color:#fff;font-family:var(--disp);font-weight:600;font-size:12px}
+  td.n,th.n{text-align:right;font-family:var(--mono)}
+  tr:nth-child(even) td{background:var(--panel2)}
+  td.co{font-weight:600;color:var(--ink)}
+  tr.hl td{background:rgba(26,86,168,.09)!important;font-weight:600}
+  .flag{font-family:var(--mono);font-size:9.5px;color:var(--amber);vertical-align:super}
+  /* callout cards */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px}
+  .card.bull{border-top:3px solid var(--green)}
+  .card.bear{border-top:3px solid var(--red)}
+  .card h3{font-family:var(--disp);font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .card.bull h3{color:var(--green)}.card.bear h3{color:var(--red)}
+  .card li{font-size:13.5px}
+  .verdict{background:linear-gradient(180deg,rgba(26,86,168,.08),var(--panel));border:1px solid var(--line);border-radius:13px;padding:18px 22px;margin-top:16px;font-size:15px;line-height:1.62}
+  .pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:20px;background:var(--panel2);border:1px solid var(--line);color:var(--dim);margin-right:6px}
+  .note{font-size:12px;color:var(--faint);font-style:italic;margin-top:6px}
+  .verify{background:var(--panel2);border:1px dashed var(--line);border-radius:12px;padding:16px 20px;margin-top:26px;font-size:13px;color:var(--dim)}
+  .verify b{color:var(--amber)}
+  footer{text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;padding:26px;letter-spacing:.5px}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}.hero .big{font-size:34px}nav.sub{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="back" href="index.html">← Hub</a>
+  <h1>Tata Capital</h1><span class="tk">NSE: TATACAP</span>
+  <nav class="sub">
+    <a href="#model">Model</a><a href="#listing">Why it listed</a><a href="#book">Loan book</a>
+    <a href="#metrics">Metrics</a><a href="#quarter">Latest Q</a><a href="#peers">Peers</a><a href="#tension">The tension</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Equity Research · NBFC · position June 2026</div>
+    <div class="big">Tata <span class="pop">Capital</span></div>
+    <div class="sec-tag">India's 3rd-largest NBFC · Tata Sons-controlled · listed Oct 2025 (RBI-mandated)</div>
+    <div class="stats">
+      <div class="stat"><div class="v">₹2.77L Cr</div><div class="l">AUM (Q4 FY26, incl. Motor)</div></div>
+      <div class="stat"><div class="v">₹4,891 Cr</div><div class="l">FY26 PAT (+34%)</div></div>
+      <div class="stat"><div class="v">~13.9%</div><div class="l">RoE (Q4 FY26)</div></div>
+      <div class="stat"><div class="v">2.0% / 0.9%</div><div class="l">GNPA / NNPA (Mar-26)</div></div>
+      <div class="stat"><div class="v">₹1.53L Cr</div><div class="l">Market cap (Jun-26)</div></div>
+      <div class="stat"><div class="v">4.46x</div><div class="l">P/B (rich)</div></div>
+    </div>
+    <div class="thesis"><b>The one-liner:</b> A Tata-backed, deeply diversified lender growing fast (~37% loan CAGR into FY24; ~28% AUM growth now) with a fortress brand and cheap funding — <b>but earning below-peer returns (RoE ~14%, RoA ~1.9%) while trading at a premium ~4.5x book.</b> The stock prices in a guided RoE ramp to 17–18%; the whole debate is whether execution delivers it.</div>
+  </div>
+
+  <section id="model">
+    <div class="eyebrow">01</div>
+    <h2 class="sec">How they make money</h2>
+    <div class="sec-tag">The classic NBFC spread engine — borrow wholesale, lend granular, earn the gap.</div>
+    <p>Tata Capital is a <b>non-bank lender</b>: it has no retail deposits, so it <b>borrows wholesale</b> (bonds, bank loans, CPs) at a <b>cost of funds of ~7.1%</b> and lends across retail, SME and corporate segments at higher yields. The gap is <b>Net Interest Income (NII)</b> / net interest margin — the core profit engine — topped up with <b>fees</b> (processing, distribution, insurance/wealth cross-sell).</p>
+    <ul>
+      <li><b>Scale & brand:</b> India's 3rd-largest diversified NBFC — <b>~900+ branches, ~7 million customers</b>, controlled by <b>Tata Sons</b>. The Tata name is a genuine moat: it lowers the cost of funds and builds borrower trust.</li>
+      <li><b>Diversification is the strategy:</b> <b>25+ products</b> across segments, with <b>no single product &gt;20%</b> of the book — deliberately spreading risk across cycles, geographies and sectors.</li>
+      <li><b>The trade-off:</b> that diversified, lower-yield, high-quality mix is <b>why returns (RoA/RoE) trail higher-yield peers</b> like Bajaj Finance — see §7.</li>
+    </ul>
+  </section>
+
+  <section id="listing">
+    <div class="eyebrow">02</div>
+    <h2 class="sec">Why it listed — RBI's scale-based regulation</h2>
+    <div class="sec-tag">This was a regulation-driven IPO, not a capital-need one.</div>
+    <p>In <b>October 2021</b> the RBI introduced <b>Scale-Based Regulation (SBR)</b>, sorting NBFCs into four tiers by size/systemic importance — <span class="pill">Base</span><span class="pill">Middle</span><span class="pill">Upper</span><span class="pill">Top</span>. The ~15–16 largest, systemically important NBFCs are placed in the <b>"Upper Layer" (NBFC-UL)</b>, which carries bank-like rules — and a hard mandate: <b>list on the exchanges within 3 years</b> of being classified.</p>
+    <p>Tata Capital was named in the <b>NBFC-UL list in September 2022</b> → its <b>listing deadline was September 2025</b>. That is the sole reason it IPO'd. The debut:</p>
+    <ul>
+      <li><b>Listed Oct 13, 2025</b> — a <b>₹15,512 Cr IPO (~$1.75bn)</b> at a <b>~$15bn valuation</b>: the largest-ever Tata Group IPO and the largest-ever NBFC IPO in India.</li>
+      <li>Structure: fresh issue (~21 Cr shares) + offer-for-sale (~26.6 Cr shares — partial exits by <b>Tata Sons and IFC</b>). Price band ₹310–326.</li>
+      <li><b>Side-benefit — it deleveraged:</b> the fresh equity lifted the capital adequacy ratio toward <b>~20% (Tier-1 ~16%, up from ~12.8%)</b>, giving fresh headroom to grow.</li>
+    </ul>
+  </section>
+
+  <section id="book">
+    <div class="eyebrow">03</div>
+    <h2 class="sec">The loan book</h2>
+    <div class="sec-tag">Retail-led, SME-heavy, thin corporate — plus a green-finance arm.</div>
+    <table>
+      <tr><th>Segment</th><th class="n">Share (FY25)</th><th>What's inside</th></tr>
+      <tr><td class="co">Retail</td><td class="n">~62%</td><td>Home loans, loan-against-property, personal, business, vehicle, two-wheeler, education, microfinance</td></tr>
+      <tr><td class="co">SME</td><td class="n">~26%</td><td>Supply-chain finance, equipment financing & leasing, term loans, developer finance</td></tr>
+      <tr><td class="co">Corporate</td><td class="n">~12%</td><td>Larger structured / wholesale credit — deliberately kept small</td></tr>
+    </table>
+    <p class="note">Retail + SME = ~88% of gross loans (Mar-25). No single product exceeds ~20% of the book — the core diversification thesis.</p>
+    <p><b>Scale:</b> gross loans grew from <b>₹1.58L Cr (FY24) → ₹2.22L Cr (FY25), +40.7%</b>, reaching <b>AUM ~₹2.77L Cr</b> by Q4 FY26 (including Motor Finance).</p>
+    <ul>
+      <li><b>Tata Cleantech Capital (green finance):</b> the sustainable-finance arm funding renewables and clean-energy projects — a differentiated, ESG-aligned niche now run within Tata Capital.</li>
+      <li><b>Motor Finance:</b> Tata Capital absorbed <b>Tata Motors Finance</b> — which is why results are reported both "ex-Motor" and "incl-Motor" (AUM ₹2.52L Cr ex-Motor vs ₹2.77L Cr incl-Motor). Motor is the lower-return drag being turned around.</li>
+    </ul>
+  </section>
+
+  <section id="metrics">
+    <div class="eyebrow">04</div>
+    <h2 class="sec">Metric sheet</h2>
+    <div class="sec-tag">Key periods (annual + recent quarters). Full 8-quarter series sits in the RHP / investor decks.</div>
+    <table>
+      <tr><th>Metric</th><th class="n">FY24</th><th class="n">FY25</th><th class="n">Q3 FY26</th><th class="n">Q4 FY26</th></tr>
+      <tr><td class="co">Gross loans / AUM</td><td class="n">₹1.58L Cr</td><td class="n">₹2.22L Cr</td><td class="n">~₹2.6L Cr</td><td class="n">₹2.77L Cr</td></tr>
+      <tr><td class="co">AUM growth (YoY)</td><td class="n">~37%</td><td class="n">+40.7%</td><td class="n">—</td><td class="n">+28%*</td></tr>
+      <tr><td class="co">Net interest income</td><td class="n">₹8,069 Cr</td><td class="n">~₹11,500 Cr</td><td class="n">—</td><td class="n">₹3,127 Cr*</td></tr>
+      <tr><td class="co">Cost of funds</td><td class="n">~7.4%</td><td class="n">~7.4%</td><td class="n">7.2%</td><td class="n">7.1%</td></tr>
+      <tr><td class="co">GNPA (Stage-3)</td><td class="n">1.71%</td><td class="n">2.33%</td><td class="n">2.2%</td><td class="n">2.0%</td></tr>
+      <tr><td class="co">NNPA (Net Stage-3)</td><td class="n">0.38%</td><td class="n">0.98%</td><td class="n">1.0%</td><td class="n">0.9%</td></tr>
+      <tr><td class="co">PCR<span class="flag">est</span></td><td class="n">~78%</td><td class="n">~58%</td><td class="n">~55%</td><td class="n">~55%</td></tr>
+      <tr><td class="co">RoA<span class="flag">est</span></td><td class="n">~2.4%</td><td class="n">~1.9%</td><td class="n">~1.9%</td><td class="n">~2.0%</td></tr>
+      <tr><td class="co">RoE</td><td class="n">13.53%</td><td class="n">10.63%</td><td class="n">13.1%</td><td class="n">13.9%</td></tr>
+      <tr><td class="co">Cost-to-income</td><td class="n">—</td><td class="n">—</td><td class="n">~37%</td><td class="n">36.1%</td></tr>
+      <tr><td class="co">Borrowings / equity</td><td class="n">~6.5x</td><td class="n">~6.x</td><td class="n">—</td><td class="n">5.3x</td></tr>
+    </table>
+    <p class="note">*Q4 FY26 growth &amp; NII shown ex-Motor Finance. <span class="flag">est</span> = PCR and RoA are derived/estimated (PCR ≈ 1 − NNPA/GNPA; RoA ≈ PAT ÷ avg assets) — verify against filings. Dashes = not separately disclosed in sources reviewed.</p>
+  </section>
+
+  <section id="quarter">
+    <div class="eyebrow">05</div>
+    <h2 class="sec">Latest quarter &amp; guidance</h2>
+    <div class="sec-tag">Q4 FY26 reported 23 Apr 2026 · management reaffirmed FY27–28 targets.</div>
+    <p><b>Q4 FY26:</b> PAT <b>₹1,502 Cr (+43% YoY)</b>; full-year <b>FY26 PAT ₹4,891 Cr (+34%)</b>. AUM ₹2.77L Cr. <b>Asset quality improved</b> — GNPA 2.2%→<b>2.0%</b>, NNPA 1.0%→<b>0.9%</b> QoQ. Cost of funds eased to <b>7.1%</b>; cost-to-income improved to <b>36.1%</b> (from 37.8%). Dividend ₹0.57/share.</p>
+    <p><b>Management guidance (FY27–28) — the bull case, in their words:</b></p>
+    <table>
+      <tr><th>Guided metric</th><th class="n">Target</th><th>Read</th></tr>
+      <tr><td class="co">AUM CAGR (FY25–28)</td><td class="n">23–25%</td><td>Sustained hyper-growth</td></tr>
+      <tr><td class="co">RoA</td><td class="n">2.5–2.7%</td><td>Up from ~1.9–2.0% today</td></tr>
+      <tr><td class="co">RoE</td><td class="n">17–18%</td><td>The key re-rating driver</td></tr>
+      <tr><td class="co">Cost-to-income</td><td class="n">33–34%</td><td>Operating leverage</td></tr>
+      <tr><td class="co">Credit cost / Net NPA</td><td class="n">&lt;1.0%</td><td>Asset-quality discipline</td></tr>
+      <tr><td class="co">PAT CAGR</td><td class="n">&gt;30%</td><td>Earnings compounding</td></tr>
+    </table>
+  </section>
+
+  <section id="peers">
+    <div class="eyebrow">06</div>
+    <h2 class="sec">Peer comparison</h2>
+    <div class="sec-tag">Tata Capital vs Bajaj Finance, Cholamandalam, Shriram Finance (FY26).</div>
+    <table>
+      <tr><th>NBFC</th><th class="n">AUM</th><th class="n">AUM growth</th><th class="n">RoA</th><th class="n">RoE</th><th class="n">GNPA</th><th class="n">P/B</th></tr>
+      <tr class="hl"><td class="co">Tata Capital</td><td class="n">₹2.77L Cr</td><td class="n">~28%</td><td class="n">~1.9%</td><td class="n">~13.9%</td><td class="n">2.0%</td><td class="n">4.46x</td></tr>
+      <tr><td class="co">Bajaj Finance</td><td class="n">~₹4.6L Cr</td><td class="n">~23%</td><td class="n">~4.4%</td><td class="n">~22%</td><td class="n">~1.0%</td><td class="n">~5–6x</td></tr>
+      <tr><td class="co">Cholamandalam</td><td class="n">₹2.43L Cr</td><td class="n">~21%</td><td class="n">~3.6–4.1%</td><td class="n">~19.7%</td><td class="n">~2.x%</td><td class="n">~5x</td></tr>
+      <tr><td class="co">Shriram Finance</td><td class="n">₹3.02L Cr</td><td class="n">~15%</td><td class="n">3.63%</td><td class="n">~19.1%</td><td class="n">4.58%</td><td class="n">~2x</td></tr>
+    </table>
+    <p class="note">The tell: Tata Capital grows fastest (~28%) but earns the <b>lowest RoA (~1.9%) and RoE (~14%)</b> of the group — yet trades at a P/B (4.46x) near the most profitable name (Bajaj). Shriram is the mirror image: cheapest book, highest GNPA. Peer P/B figures indicative — verify live.</p>
+  </section>
+
+  <section id="tension">
+    <div class="eyebrow">07</div>
+    <h2 class="sec">The tension — is it worth the multiple?</h2>
+    <div class="sec-tag">The whole investment case in one screen.</div>
+    <div class="cards">
+      <div class="card bull">
+        <h3>▲ The bull case</h3>
+        <ul>
+          <li><b>The Tata brand</b> — trust + one of the lowest costs of funds (~7.1%) in the sector.</li>
+          <li><b>Hyper-growth</b> — ~37% loan CAGR into FY24, ~28% AUM growth now; guiding 23–25% CAGR.</li>
+          <li><b>Improving quality</b> — GNPA already rolling over (2.33% → 2.0%); NNPA &lt;1%.</li>
+          <li><b>Operating leverage ahead</b> — C/I 36% → guided 33–34%; RoA guided 2.5–2.7%, RoE to <b>17–18%</b>.</li>
+          <li><b>Diversified & de-risked</b> — no product &gt;20%; freshly capitalised (CAR ~20%).</li>
+        </ul>
+      </div>
+      <div class="card bear">
+        <h3>▼ The bear case</h3>
+        <ul>
+          <li><b>Returns lag badly</b> — RoE ~14% and RoA ~1.9% are the <b>lowest of the peer set</b> (Bajaj 22%, Chola 20%, Shriram 19%).</li>
+          <li><b>Rich valuation</b> — <b>P/B ~4.46x</b> (richer than the ~3.4x often quoted), near Bajaj's multiple but on far lower returns.</li>
+          <li><b>Leverage</b> — borrowings/equity ~5.3x (was ~6.5x pre-IPO); growth is debt-fuelled.</li>
+          <li><b>Motor-finance drag</b> on blended returns during integration.</li>
+          <li><b>Execution risk</b> — the price already assumes the RoE ramp happens.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><b>The verdict to present:</b> You're paying a <b>premium ~4.5x book for a franchise that currently earns sub-peer returns</b>. The bet is entirely on <b>execution closing the gap</b> — RoA lifting from ~1.9% toward the guided 2.5–2.7%, and RoE from ~14% toward 17–18%, powered by operating leverage and the Motor-finance turnaround. <b>If Tata delivers, today's multiple is justified by the growth + brand; if the RoE ramp stalls, the stock is expensive for what it earns.</b> The Tata name buys time and cheap funding that most NBFCs never get — that optionality is exactly what the market is capitalising.</div>
+  </section>
+
+  <div class="verify">
+    <b>What to re-verify before relying on this:</b> P/B / P/E / share price move daily (pull live). <b>RoA &amp; PCR are derived estimates</b> (RoA ≈ PAT ÷ avg assets; PCR ≈ 1 − NNPA/GNPA) — confirm reported figures in the FY26 investor deck. The <b>full 8-quarter series</b> (NIM/spread by quarter, quarterly PCR, C/I for FY24–25) should be lifted from the RHP + quarterly investor presentations. Peer P/B and some RoA figures are indicative. Loan-mix percentages are FY25 (Mar-25).
+    <div class="note">Sources: Tata Capital RHP &amp; FY25 Annual Report, Q4 FY26 investor presentation (23 Apr 2026) &amp; press release; RBI Scale-Based Regulation (Oct 2021); Bajaj Finance / Cholamandalam / Shriram Finance Q4 FY26 results; NSE/Screener (Jun 2026). Figures approximate — not investment advice.</div>
+  </div>
+
+</div>
+<footer>TATA CAPITAL — EQUITY RESEARCH · JUNE 2026 · FOR DISCUSSION, VERIFY AGAINST FILINGS</footer>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF2F9;--panel:#FFFFFF;--line:#D7DEEC;
+    --accent:#0A84C9;--ink:#16203B;--dim:#586289;--faint:#97A0BC;
+    --disp:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--body);min-height:100vh;
+    background-image:radial-gradient(circle at 12% 8%,rgba(10,132,201,.08),transparent 42%),radial-gradient(circle at 88% 92%,rgba(124,58,237,.06),transparent 45%);
+    background-attachment:fixed;display:flex;flex-direction:column;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:64px 28px 48px;width:100%}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:3px;color:var(--accent);font-weight:500;text-transform:uppercase}
+  h1{font-family:var(--disp);font-size:54px;font-weight:700;letter-spacing:-.02em;margin:10px 0 8px;line-height:1.02}
+  h1 .pop{color:var(--accent)}
+  .sub{color:var(--dim);font-size:17px;max-width:640px;line-height:1.5}
+  .rule{height:3px;width:60px;background:var(--accent);border-radius:3px;margin:26px 0 36px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+  .tile{
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 24px 22px;
+    text-decoration:none;color:inherit;position:relative;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 4px 20px rgba(22,32,59,.05);transition:.22s ease;min-height:188px;
+  }
+  .tile::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--c)}
+  .tile:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(22,32,59,.14);border-color:var(--c)}
+  .ico{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:27px;background:var(--cdim);margin-bottom:16px}
+  .tile h2{font-family:var(--disp);font-size:23px;font-weight:600;margin-bottom:7px}
+  .tile p{color:var(--dim);font-size:14px;line-height:1.5;flex:1}
+  .go{margin-top:16px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--c);letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+  .tile:hover .go{gap:11px}
+  .tag{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.5px;padding:3px 9px;border-radius:20px;background:var(--cdim);color:var(--c);text-transform:uppercase}
+  footer{margin-top:auto;text-align:center;padding:22px;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:1px}
+  @media(max-width:600px){h1{font-size:38px}.wrap{padding:44px 18px 32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Equity Research Workspace</div>
+  <h1>Research <span class="pop">Hub</span></h1>
+  <p class="sub">One place for everything — deep-dives, frameworks, notes and the gameplan. Pick a bucket to dive in.</p>
+  <div class="rule"></div>
+
+  <div class="grid">
+    <a class="tile" href="adani-deep-dive.html" style="--c:#0A84C9;--cdim:rgba(10,132,201,.12)">
+      <div class="ico">🏭</div>
+      <h2>Adani</h2>
+      <p>Conglomerate deep-dive — 9 listed companies, the energy value chain, supplier map and an interactive India asset map.</p>
+      <div class="go">OPEN DEEP-DIVE →</div>
+    </a>
+
+    <a class="tile" href="tata-capital.html" style="--c:#1A56A8;--cdim:rgba(26,86,168,.12)">
+      <div class="ico">🏦</div>
+      <h2>Tata Capital</h2>
+      <p>Equity research — India's #3 NBFC: loan-book map, 8-quarter metrics, peer comps and the growth-vs-valuation tension.</p>
+      <div class="go">OPEN RESEARCH →</div>
+    </a>
+
+    <a class="tile" href="books.html" style="--c:#7C3AED;--cdim:rgba(124,58,237,.12)">
+      <div class="ico">📚</div>
+      <h2>Books</h2>
+      <p>Reading notes, investing classics and the lessons worth keeping.</p>
+      <div class="go">OPEN LIBRARY →</div>
+    </a>
+
+    <a class="tile" href="adani-deep-dive.html#copper" style="--c:#C2710C;--cdim:rgba(194,113,12,.13)">
+      <div class="ico">⛏️</div>
+      <h2>Copper</h2>
+      <p>The investment world of copper — AI-era demand, the supply gap, the value chain and the Kutch Copper case study.</p>
+      <div class="go">OPEN COPPER STUDY →</div>
+    </a>
+
+    <a class="tile" href="gameplan.html" style="--c:#DC2626;--cdim:rgba(220,38,38,.1)">
+      <div class="ico">🎯</div>
+      <h2>Gameplan</h2>
+      <p>Strategy, watchlist and the plan — what to track, what to act on, and when.</p>
+      <div class="go">OPEN GAMEPLAN →</div>
+    </a>
+
+    <a class="tile" href="financials.html" style="--c:#0E9E73;--cdim:rgba(14,158,115,.12)">
+      <div class="ico">📊</div>
+      <h2>Financial Statements</h2>
+      <p>The BSFI equity-research guide — how to read and analyse financial statements end to end.</p>
+      <div class="go">OPEN GUIDE →</div>
+    </a>
+  </div>
+</div>
+<footer>RESEARCH HUB · BUILT FOR FAST NAVIGATION</footer>
+</body>
+</html>
