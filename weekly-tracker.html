@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Weekly Tracker · Research Hub</title>
+<style>
+  :root{
+    --navy:#14213d; --navy2:#1a2b4a; --ink:#1a1a2e; --paper:#f4f3ef; --card:#ffffff;
+    --line:#e4e8ee; --muted:#6b7785;
+    --amber:#b5651d; --blue:#1565c0; --green:#2e7d32; --purple:#6a1b9a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,'Segoe UI',Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;}
+  a{color:inherit;}
+
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#0f3460 100%);color:#fff;padding:34px 40px 30px;}
+  .eyebrow{font-size:11px;letter-spacing:2px;color:#7e90a8;text-transform:uppercase;font-weight:700;}
+  header h1{font-size:26px;font-weight:800;margin-top:6px;}
+  header p{font-size:13px;color:#a8b4c8;margin-top:6px;max-width:680px;}
+  .crumbs{margin-top:14px;font-size:12px;}
+  .crumbs a{color:#8fb8f0;text-decoration:none;} .crumbs a:hover{text-decoration:underline;}
+
+  .wrap{max-width:1000px;margin:0 auto;padding:26px 20px 70px;}
+
+  /* overall progress */
+  .overall{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .overall .big{font-size:34px;font-weight:800;color:var(--navy);min-width:90px;}
+  .overall .bar-wrap{flex:1;min-width:220px;}
+  .overall .lbl{font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .bar{height:12px;background:#eceff3;border-radius:8px;overflow:hidden;}
+  .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,#2e7d32,#43a047);transition:width .4s ease;}
+  .reset{margin-left:auto;font-size:11px;color:var(--muted);background:#f2f4f7;border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer;}
+  .reset:hover{background:#e9edf2;}
+
+  .directive{background:#fff;border:1px solid var(--line);border-left:5px solid #0f3460;border-radius:10px;padding:13px 18px;margin-bottom:22px;font-size:12.5px;color:#3d4754;}
+  .directive b{color:var(--navy);}
+
+  .phase{margin-bottom:26px;}
+  .phase-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .phase-badge{color:#fff;font-weight:800;font-size:12px;border-radius:8px;padding:6px 12px;}
+  .p1{background:linear-gradient(135deg,var(--amber),#8a4a14);}
+  .p2{background:linear-gradient(135deg,var(--blue),#0d3f87);}
+  .p3{background:linear-gradient(135deg,var(--green),#1b5e20);}
+  .side-badge{background:linear-gradient(135deg,var(--purple),#4a148c);}
+  .phase-title{font-size:16px;font-weight:800;}
+  .phase-sub{font-size:11.5px;color:var(--muted);}
+  .phase-prog{margin-left:auto;min-width:140px;}
+  .phase-prog .bar{height:8px;}
+  .phase-prog .pct{font-size:11px;color:var(--muted);text-align:right;margin-top:3px;}
+
+  .week{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;}
+  .week-top{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;}
+  .week-no{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#98a2b0;}
+  .week-title{font-size:14px;font-weight:700;}
+  .task{display:flex;align-items:flex-start;gap:10px;padding:5px 0;font-size:12.5px;color:#3d4754;cursor:pointer;border-radius:6px;}
+  .task:hover{background:#fafbfc;}
+  .task input{margin-top:2px;width:15px;height:15px;accent-color:var(--green);flex-shrink:0;cursor:pointer;}
+  .task.done label{color:#9aa3ad;text-decoration:line-through;}
+  .task.deliv{font-weight:700;color:var(--green);}
+  .task.deliv label{color:var(--green);}
+  .task.deliv.done label{color:#9aa3ad;}
+  .task label{cursor:pointer;}
+
+  .side{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .side-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px;}
+  @media(max-width:640px){.side-grid{grid-template-columns:1fr;}}
+  .side h5{grid-column:1/-1;font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--purple);font-weight:800;margin:10px 0 2px;}
+  .side h5:first-child{margin-top:0;}
+
+  footer{text-align:center;font-size:11px;color:#9aa3ad;margin-top:30px;letter-spacing:1px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Equity Research Workspace</div>
+  <h1>🗓️ Weekly Tracker</h1>
+  <p>The plan Vijay laid out, week by week: build the accounting + DCF foundation, apply it on live work with Aniket, then write an investment memo. Industry &amp; company learning runs on the side. Tick tasks as you go — progress saves automatically.</p>
+  <div class="crumbs"><a href="index.html">← Back to Research Hub</a> &nbsp;·&nbsp; <a href="gameplan.html">Gameplan</a></div>
+</header>
+
+<div class="wrap">
+
+  <div class="overall">
+    <div class="big" id="overallPct">0%</div>
+    <div class="bar-wrap">
+      <div class="lbl" id="overallLbl">0 of 0 tasks complete</div>
+      <div class="bar"><span id="overallBar"></span></div>
+    </div>
+    <button class="reset" onclick="resetAll()">Reset progress</button>
+  </div>
+
+  <div class="directive">
+    <b>Directive:</b> find an accounting professor → learn to build a DCF → do the work with Aniket → write an investment memo. Everything else is on the side.
+  </div>
+
+  <!-- Container filled by JS -->
+  <div id="phases"></div>
+
+  <!-- SIDE GOALS -->
+  <div class="phase">
+    <div class="phase-head">
+      <span class="phase-badge side-badge">SIDE</span>
+      <div><div class="phase-title">On the Side — small ongoing goals</div>
+        <div class="phase-sub">One or two a week, no rush</div></div>
+      <div class="phase-prog"><div class="bar"><span id="bar-side"></span></div><div class="pct" id="pct-side">0%</div></div>
+    </div>
+    <div class="side" id="sideGoals"></div>
+  </div>
+
+  <footer>RESEARCH HUB · WEEKLY TRACKER · PROGRESS SAVED ON THIS DEVICE</footer>
+</div>
+
+<script>
+// ---------- data ----------
+const D = "◆ ";
+const phases = [
+  { id:"p1", cls:"p1", title:"Phase 1 — Accounting Foundations + Build a DCF",
+    sub:"Weeks 1–4 · learn it properly with a professor before touching live work",
+    weeks:[
+      {t:"Week 1 · Accounting foundations I", tasks:[
+        "Line up an accounting professor / CA mentor — or enrol in a structured course",
+        "Learn the three statements and exactly how they link (net income → retained earnings → cash)",
+        "Understand accrual vs cash accounting and revenue recognition",
+        "Read one company's full financials + notes end to end"]},
+      {t:"Week 2 · Accounting foundations II", tasks:[
+        "Working capital mechanics; depreciation, deferred tax, leases, ESOPs",
+        "Normalize a company's numbers (strip out one-offs / exceptionals)",
+        "Ratio refresher: margins, RoE / RoCE, leverage, coverage",
+        "Watch Damodaran's intro valuation lectures (free, NYU)"]},
+      {t:"Week 3 · DCF build I", tasks:[
+        "Set up a clean model structure with a separate assumptions tab",
+        "Revenue build from real drivers → operating assumptions → EBIT → NOPAT",
+        "Reinvestment (capex + working capital) → free cash flow to firm (FCFF)"]},
+      {t:"Week 4 · DCF build II", tasks:[
+        "WACC: cost of equity (CAPM), cost of debt, capital weights",
+        "Terminal value — both Gordon growth and exit-multiple methods",
+        "Discount → enterprise value → equity value → per-share value",
+        "Sensitivity tables (WACC × growth) + sanity-check vs market price",
+        D+"Deliverable: a clean, fully-linked DCF model you built solo"]},
+    ]},
+  { id:"p2", cls:"p2", title:"Phase 2 — Apply It: Real Work with Aniket",
+    sub:"Weeks 5–8 · a live name in Vimana's coverage, under supervision",
+    weeks:[
+      {t:"Week 5 · Set up on a live name", tasks:[
+        "Pick a real company with Aniket; gather the filings",
+        "Normalize historicals and set up the model shell"]},
+      {t:"Week 6 · Operating model", tasks:[
+        "Build the operating model (revenue drivers, margins, working capital, capex)",
+        "Produce a first-pass FCFF projection"]},
+      {t:"Week 7 · Valuation", tasks:[
+        "Build the DCF + WACC + terminal value on the live name",
+        "Add relative valuation (the right multiple) to triangulate"]},
+      {t:"Week 8 · Iterate & sign-off", tasks:[
+        "Have Aniket break your assumptions; rebuild until it holds",
+        "Land on a fair value vs market and get sign-off",
+        D+"Deliverable: completed model + valuation, reviewed by Aniket"]},
+    ]},
+  { id:"p3", cls:"p3", title:"Phase 3 — Write the Investment Memo",
+    sub:"Weeks 9–12 · the output that proves you can do the whole job",
+    weeks:[
+      {t:"Week 9 · Thesis & business", tasks:[
+        "Draft the thesis up front — the call and why, in three lines",
+        "Write the business & industry section (how it makes money, position)"]},
+      {t:"Week 10 · Financials & valuation", tasks:[
+        "Write the financials + DCF section; lay out key assumptions",
+        "Write the valuation section (DCF + relative, fair-value range)"]},
+      {t:"Week 11 · Risks & recommendation", tasks:[
+        "Risks and what would break the thesis",
+        "Recommendation: invest / avoid / watch, with a target",
+        "Tighten the whole memo; lead with the conclusion"]},
+      {t:"Week 12 · Present", tasks:[
+        "Polish the memo; build a short supporting presentation",
+        "Present to Aniket & the desk; take the pushback",
+        "Capture feedback and next steps",
+        D+"Deliverable: a polished investment memo, presented — your capstone"]},
+    ]},
+];
+
+const side = {
+  "Industries (2–3 driving metrics + right multiple)":[
+    "BFSI / NBFC — NIM, asset quality, RoA → P/B–RoE",
+    "Pharma — domestic vs US mix, USFDA → P/E",
+    "Power / transmission — PLF, regulated RoE → EV/EBITDA",
+    "FMCG — volume vs price, margins → premium P/E",
+    "Packaging — EBITDA/kg, resin cost → EV/EBITDA"],
+  "Company primers (one each)":[
+    "Tata Capital (NBFC)","JB Chemicals (pharma)","Adani Energy Solutions (transmission)",
+    "Varun Beverages (FMCG)","Mold-Tek Packaging (food-grade plastic)"],
+  "Macro (skim monthly)":[
+    "RBI policy, CPI, IIP, PMI, GST","AMFI / SIP flows; FII / DII flows","USD/INR & crude"],
+  "Markets & instruments":[
+    "F&O basics + what moves an option's price","Copper & commodities → equity link","Bonds: yields → cost of capital in the DCF"],
+  "Risk (build once, reuse)":[
+    "Red-flag checklist: CFO vs PAT, leverage, governance","Positive-signals checklist"],
+};
+
+// ---------- state ----------
+const KEY = "vimana_weekly_tracker_v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+// ---------- render ----------
+function taskRow(id, text){
+  const done = state[id] ? " done" : "";
+  const deliv = text.startsWith(D) ? " deliv" : "";
+  const label = text.startsWith(D) ? text.slice(D.length) : text;
+  return `<div class="task${done}${deliv}" data-id="${id}">
+      <input type="checkbox" ${state[id]?"checked":""} onchange="toggle('${id}')">
+      <label onclick="toggle('${id}')">${text.startsWith(D)?"► ":""}${label}</label></div>`;
+}
+
+let html = "";
+phases.forEach(p=>{
+  let weeksHtml = "";
+  p.weeks.forEach((w,wi)=>{
+    let rows = "";
+    w.tasks.forEach((t,ti)=>{ rows += taskRow(`${p.id}-${wi}-${ti}`, t); });
+    weeksHtml += `<div class="week"><div class="week-top"><span class="week-no">${w.t.split(" · ")[0]}</span>
+        <span class="week-title">${w.t.split(" · ")[1]||""}</span></div>${rows}</div>`;
+  });
+  html += `<div class="phase" data-phase="${p.id}">
+     <div class="phase-head"><span class="phase-badge ${p.cls}">${p.id.toUpperCase()}</span>
+       <div><div class="phase-title">${p.title}</div><div class="phase-sub">${p.sub}</div></div>
+       <div class="phase-prog"><div class="bar"><span id="bar-${p.id}"></span></div><div class="pct" id="pct-${p.id}">0%</div></div>
+     </div>${weeksHtml}</div>`;
+});
+document.getElementById("phases").innerHTML = html;
+
+// side goals
+let sideHtml = "";
+let si = 0;
+for(const [group, items] of Object.entries(side)){
+  sideHtml += `<div class="side-grid"><h5>${group}</h5>`;
+  items.forEach(it=>{ sideHtml += taskRow(`side-${si++}`, it); });
+  sideHtml += `</div>`;
+}
+document.getElementById("sideGoals").innerHTML = sideHtml;
+
+// ---------- logic ----------
+function allIds(){ return Array.from(document.querySelectorAll(".task")).map(el=>el.dataset.id); }
+function toggle(id){
+  state[id] = !state[id]; save();
+  const el = document.querySelector(`.task[data-id="${id}"]`);
+  if(el){ el.classList.toggle("done", !!state[id]); const cb = el.querySelector("input"); if(cb) cb.checked = !!state[id]; }
+  updateBars();
+}
+function pct(ids){ if(!ids.length) return 0; const done = ids.filter(i=>state[i]).length; return Math.round(done/ids.length*100); }
+function setBar(barId, pctId, ids){
+  const p = pct(ids);
+  const b = document.getElementById(barId); if(b) b.style.width = p+"%";
+  const t = document.getElementById(pctId); if(t) t.textContent = p+"%";
+}
+function updateBars(){
+  phases.forEach(p=>{
+    const ids = allIds().filter(i=>i.startsWith(p.id+"-"));
+    setBar(`bar-${p.id}`, `pct-${p.id}`, ids);
+  });
+  const sideIds = allIds().filter(i=>i.startsWith("side-"));
+  setBar("bar-side","pct-side", sideIds);
+  const all = allIds(); const done = all.filter(i=>state[i]).length;
+  const op = all.length? Math.round(done/all.length*100):0;
+  document.getElementById("overallBar").style.width = op+"%";
+  document.getElementById("overallPct").textContent = op+"%";
+  document.getElementById("overallLbl").textContent = `${done} of ${all.length} tasks complete`;
+}
+function resetAll(){
+  if(!confirm("Clear all progress on this device?")) return;
+  state = {}; save();
+  document.querySelectorAll(".task").forEach(el=>{ el.classList.remove("done"); const cb=el.querySelector("input"); if(cb) cb.checked=false; });
+  updateBars();
+}
+updateBars();
+</script>
+</body>
+</html>

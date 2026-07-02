@@ -22,6 +22,13 @@
   .placeholder{background:var(--panel);border:1px dashed var(--line);border-radius:16px;padding:40px 30px;text-align:center;color:var(--faint)}
   .placeholder .big{font-family:var(--disp);font-size:20px;color:var(--dim);font-weight:600;margin-bottom:8px}
   .placeholder p{font-size:14px;line-height:1.6;max-width:460px;margin:0 auto}
+  .card-link{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:16px;padding:22px 26px;transition:.15s;color:inherit}
+  .card-link:hover{box-shadow:0 6px 20px rgba(220,38,38,.1);transform:translateY(-1px)}
+  .card-link .ctag{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--c)}
+  .card-link .ctitle{font-family:var(--disp);font-size:22px;font-weight:700;margin:6px 0 6px;display:flex;align-items:center;gap:10px}
+  .card-link .cdesc{color:var(--dim);font-size:14px;line-height:1.55;max-width:640px}
+  .card-link .cgo{font-family:var(--mono);font-size:12px;color:var(--c);margin-top:12px;display:inline-flex;align-items:center;gap:6px;transition:.15s}
+  .card-link:hover .cgo{gap:11px}
 </style>
 </head>
 <body>
@@ -31,10 +38,12 @@
   <h1><span class="ico">🎯</span> Gameplan</h1>
   <p class="sub">The plan — what to track, what to act on, and when.</p>
   <div class="rule"></div>
-  <div class="placeholder">
-    <div class="big">Your gameplan starts here</div>
-    <p>Ready for content — watchlist, conviction levels, entry/exit triggers, catalysts to watch and a weekly review checklist. Tell me what to add and I'll build it out.</p>
-  </div>
+  <a class="card-link" href="weekly-tracker.html">
+    <div class="ctag">Interactive · 12-week plan</div>
+    <div class="ctitle">🗓️ Weekly Tracker</div>
+    <div class="cdesc">Vijay's plan, week by week — build the accounting + DCF foundation, apply it live with Aniket, then write an investment memo. Industry &amp; company learning runs on the side. Tick tasks as you go; progress saves on your device.</div>
+    <div class="cgo">Open tracker →</div>
+  </a>
 </div>
 </body>
 </html>
