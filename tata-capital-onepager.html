@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tata Capital — One-Pager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF2F9;--panel:#FFFFFF;--panel2:#F6F8FC;--line:#D7DEEC;
+    --accent:#1A56A8;--ink:#16203B;--dim:#586289;--faint:#97A0BC;
+    --green:#0E9E73;--red:#DC2626;--amber:#C2710C;
+    --disp:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.4;font-size:11px;display:flex;justify-content:center;padding:18px}
+  .page{background:var(--panel);width:210mm;min-height:297mm;padding:14mm 14mm 10mm;box-shadow:0 4px 24px rgba(22,32,59,.12)}
+
+  .head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--accent);padding-bottom:9px;margin-bottom:11px}
+  .head .eyebrow{font-family:var(--mono);font-size:8.5px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+  .head h1{font-family:var(--disp);font-size:27px;font-weight:700;letter-spacing:-.02em;line-height:1}
+  .head h1 .pop{color:var(--accent)}
+  .head .r{text-align:right;font-size:9px;color:var(--dim);line-height:1.5}
+  .head .r .tk{font-family:var(--mono);color:var(--accent);font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:11px}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:7px 9px}
+  .stat .v{font-family:var(--disp);font-size:14px;font-weight:700;color:var(--accent);line-height:1.1}
+  .stat .l{font-size:8px;color:var(--dim);margin-top:1px}
+
+  .thesis{background:var(--panel2);border-left:3px solid var(--accent);border-radius:6px;padding:8px 11px;margin-bottom:11px;font-size:10.5px;line-height:1.5}
+  .thesis b{color:var(--ink)}
+
+  h2{font-family:var(--disp);font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:11px}
+  p{margin-bottom:6px}
+  .mono{font-family:var(--mono)}
+  ul{margin:0 0 0 15px}li{margin-bottom:3px}
+
+  table{width:100%;border-collapse:collapse;font-size:9.5px;margin-bottom:4px}
+  th,td{padding:3.5px 6px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--accent);color:#fff;font-family:var(--disp);font-weight:600;font-size:9px}
+  td.n,th.n{text-align:right;font-family:var(--mono)}
+  td.co{font-weight:600}
+  tr:nth-child(even) td{background:var(--panel2)}
+
+  .bb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:11px}
+  .card{border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+  .card.bull{border-top:3px solid var(--green)}
+  .card.bear{border-top:3px solid var(--red)}
+  .card h3{font-family:var(--disp);font-size:11px;margin-bottom:5px}
+  .card.bull h3{color:var(--green)}.card.bear h3{color:var(--red)}
+  .card li{font-size:9.5px;line-height:1.4}
+
+  .verdict{background:linear-gradient(180deg,rgba(26,86,168,.08),var(--panel));border:1px solid var(--line);border-radius:8px;padding:10px 13px;font-size:10.5px;line-height:1.5;margin-bottom:10px}
+  .verdict b{color:var(--ink)}
+  .foot{border-top:1px solid var(--line);padding-top:7px;font-size:8px;color:var(--faint);line-height:1.5}
+  .foot b{color:var(--amber)}
+  .backlink{display:inline-block;font-family:var(--mono);font-size:9px;color:var(--dim);text-decoration:none;margin-bottom:8px}
+  .backlink:hover{color:var(--accent)}
+
+  @media print{
+    body{background:#fff;padding:0}
+    .page{box-shadow:none;width:auto;min-height:auto;padding:0}
+    @page{size:A4;margin:12mm}
+    .backlink{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="backlink" href="index.html">← Research Hub</a>
+
+  <div class="head">
+    <div>
+      <div class="eyebrow">Equity Research · One-Pager</div>
+      <h1>Tata <span class="pop">Capital</span></h1>
+    </div>
+    <div class="r">
+      <div class="tk">NSE: TATACAP</div>
+      <div>India's 3rd-largest diversified NBFC</div>
+      <div>Tata Sons-controlled · listed Oct 2025</div>
+      <div>Position: June 2026</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v">₹2.77L Cr</div><div class="l">AUM (Q4 FY26, incl. Motor)</div></div>
+    <div class="stat"><div class="v">₹4,891 Cr</div><div class="l">FY26 PAT (+34% YoY)</div></div>
+    <div class="stat"><div class="v">~13.9%</div><div class="l">RoE (Q4 FY26 ann.)</div></div>
+    <div class="stat"><div class="v">~1.9%</div><div class="l">RoA (FY26 full-year est)</div></div>
+    <div class="stat"><div class="v">2.0% / 0.9%</div><div class="l">GNPA / NNPA (Mar-26)</div></div>
+    <div class="stat"><div class="v">7.1%</div><div class="l">Cost of funds (Q4)</div></div>
+    <div class="stat"><div class="v">₹1.53L Cr</div><div class="l">Market cap (Jun-26)</div></div>
+    <div class="stat"><div class="v">4.46x</div><div class="l">P/B (rich vs history)</div></div>
+  </div>
+
+  <div class="thesis">
+    <b>The one-liner:</b> A Tata-backed, deeply diversified lender growing fast (~28% AUM growth) with a fortress brand and among the cheapest funding in the sector — <b>but earning below-peer returns (RoE ~14%, RoA ~1.9%) while trading at a premium ~4.5x book.</b> The stock prices in a guided RoE ramp to 17–18%; the whole debate is whether execution delivers it.
+  </div>
+
+  <div class="cols">
+    <div>
+      <h2>The Business</h2>
+      <p>A non-bank lender (no deposits): borrows wholesale at ~7.1% and lends granular across retail, SME &amp; corporate; profit = net interest spread + fees. The real moat is the <b>Tata-brand funding-cost advantage</b> most NBFCs can't match. ~900+ branches, ~7m customers, 25+ products, no product &gt;20% of book.</p>
+      <p><b>Why returns lag:</b> a secured, prime, lower-yield mix structurally earns a thinner spread than high-yield peers — buying asset-quality &amp; durability with yield. That's a choice, not (mainly) a failure.</p>
+      <h2 style="margin-top:8px">Loan Mix (FY25)</h2>
+      <table>
+        <tr><th>Segment</th><th class="n">Share</th><th>Core</th></tr>
+        <tr><td class="co">Retail</td><td class="n">~62%</td><td>Home/LAP, personal, vehicle, 2W, edu, MFI</td></tr>
+        <tr><td class="co">SME</td><td class="n">~26%</td><td>Supply-chain, leasing, developer</td></tr>
+        <tr><td class="co">Corporate</td><td class="n">~12%</td><td>Wholesale — kept small by design</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Key Financials</h2>
+      <table>
+        <tr><th>Metric</th><th class="n">FY24</th><th class="n">FY25</th><th class="n">FY26</th></tr>
+        <tr><td class="co">AUM</td><td class="n">₹1.58L</td><td class="n">₹2.22L</td><td class="n">₹2.77L</td></tr>
+        <tr><td class="co">Total income (₹Cr)</td><td class="n">18,198</td><td class="n">28,370</td><td class="n">31,583</td></tr>
+        <tr><td class="co">PAT (₹Cr)</td><td class="n">3,327</td><td class="n">3,655</td><td class="n">4,891</td></tr>
+        <tr><td class="co">RoE</td><td class="n">13.5%</td><td class="n">10.6%</td><td class="n">~12%*</td></tr>
+        <tr><td class="co">GNPA</td><td class="n">1.71%</td><td class="n">2.33%</td><td class="n">2.0%</td></tr>
+        <tr><td class="co">Borr./equity</td><td class="n">~6.5x</td><td class="n">~6x</td><td class="n">5.3x</td></tr>
+      </table>
+      <h2 style="margin-top:8px">Mgmt Guidance (FY27–28)</h2>
+      <table>
+        <tr><th>Metric</th><th class="n">Target</th><th>Read</th></tr>
+        <tr><td class="co">AUM CAGR</td><td class="n">23–25%</td><td>Sustained growth</td></tr>
+        <tr><td class="co">RoA</td><td class="n">2.5–2.7%</td><td>Up from ~1.9%</td></tr>
+        <tr><td class="co">RoE</td><td class="n">17–18%</td><td>Key re-rating driver</td></tr>
+        <tr><td class="co">Cost-to-income</td><td class="n">33–34%</td><td>Operating leverage</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="bb">
+    <div class="card bull">
+      <h3>▲ Bull case</h3>
+      <ul>
+        <li><b>Brand = moat</b> → ~7.1% cost of funds few peers can match.</li>
+        <li><b>Hyper-growth</b> — ~28% AUM now; guiding 23–25% CAGR.</li>
+        <li><b>Improving quality</b> — GNPA 2.33%→2.0%; NNPA &lt;1%.</li>
+        <li><b>Operating leverage ahead</b> — RoE guided to 17–18%.</li>
+        <li><b>Diversified &amp; freshly capitalised</b> — CAR ~20%.</li>
+      </ul>
+    </div>
+    <div class="card bear">
+      <h3>▼ Bear case</h3>
+      <ul>
+        <li><b>Returns lag</b> — RoE ~14% / RoA ~1.9%, lowest of peers.</li>
+        <li><b>Rich valuation</b> — ~4.46x book, near Bajaj on far lower returns.</li>
+        <li><b>Leverage</b> — 5.3x; growth is debt-fuelled, no deposits.</li>
+        <li><b>Motor-finance drag</b> on blended returns during integration.</li>
+        <li><b>Execution risk</b> — price already assumes the RoE ramp.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <b>Verdict:</b> You're paying a <b>premium ~4.5x book for a franchise that currently earns sub-peer returns.</b> The bet is entirely on <b>execution closing the gap</b> — RoA from ~1.9% toward 2.5–2.7% and RoE from ~14% toward 17–18%, via operating leverage and the Motor-finance turnaround. If Tata delivers, today's multiple is justified by growth + brand; if the ramp stalls, the stock is expensive for what it earns. The Tata name buys time and cheap funding most NBFCs never get — that optionality is what the market is capitalising.
+  </div>
+
+  <div class="foot">
+    <b>Not investment advice — verify before relying.</b> Share price / P·B / peer multiples move daily. RoA &amp; full-year RoE are derived estimates (mid-year IPO equity depresses full-year RoE below the 13.9% Q4-exit rate). *FY26 RoE est. GNPA ~2.0% is Q4 managed basis — some FY26 summaries cite ~2.6% on a standalone/incl-Motor basis; confirm the exact basis. Sources: Tata Capital RHP &amp; FY25 AR, Q4 FY26 investor presentation (23 Apr 2026); RBI SBR (Oct 2021); peer Q4 FY26 results; NSE/Screener (Jun 2026).
+  </div>
+
+</div>
+</body>
+</html>
