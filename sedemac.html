@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sedemac Mechatronics — Equity Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDF4F6;--panel:#FFFFFF;--panel2:#F3F8FA;--line:#D3E0E6;
+    --accent:#0E7C99;--accent2:#0AA2C0;--ink:#132A33;--dim:#527080;--faint:#93AAB4;
+    --green:#0E9E73;--red:#DC2626;--amber:#C2710C;
+    --disp:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;
+    background-image:radial-gradient(circle at 12% 6%,rgba(14,124,153,.09),transparent 42%);background-attachment:fixed}
+  .mono{font-family:var(--mono)}
+  a{color:inherit}
+  header.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .back{text-decoration:none;color:var(--dim);font-family:var(--mono);font-size:12px;letter-spacing:.5px;transition:.15s}
+  .back:hover{color:var(--accent)}
+  .top h1{font-family:var(--disp);font-size:20px;font-weight:700}
+  .tk{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(14,124,153,.1);padding:3px 9px;border-radius:20px}
+  nav.sub{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+  nav.sub a{text-decoration:none;font-size:12px;color:var(--dim);padding:5px 9px;border-radius:8px;transition:.15s;font-weight:500}
+  nav.sub a:hover{background:var(--panel2);color:var(--accent)}
+  .wrap{max-width:1000px;margin:0 auto;padding:34px 26px 70px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase}
+  h2.sec{font-family:var(--disp);font-size:26px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em;scroll-margin-top:70px}
+  h3.sub{font-family:var(--disp);font-size:17px;font-weight:600;color:var(--ink);margin:22px 0 8px}
+  h4.mini{font-family:var(--disp);font-size:14.5px;font-weight:600;color:var(--accent);margin:16px 0 6px;letter-spacing:.2px}
+  .sec-tag{color:var(--dim);font-size:14px;margin-bottom:18px}
+  section{padding:30px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  p{margin-bottom:12px;font-size:15px}
+  b{color:var(--ink)}
+  ul{margin:0 0 12px 20px}li{font-size:14.5px;margin-bottom:6px}
+  .hero{padding:40px 0 20px}
+  .hero .big{font-family:var(--disp);font-size:44px;font-weight:700;letter-spacing:-.02em;line-height:1.03}
+  .hero .big .pop{color:var(--accent)}
+  .thesis{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px 20px;margin-top:18px;font-size:15px;line-height:1.6}
+  .src{background:rgba(14,124,153,.07);border:1px solid rgba(14,124,153,.22);border-radius:10px;padding:11px 16px;margin-top:16px;font-size:13px;color:var(--dim)}
+  .src b{color:var(--accent)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .stat .v{font-family:var(--disp);font-size:20px;font-weight:700;color:var(--accent)}
+  .stat .l{font-size:11.5px;color:var(--dim);margin-top:2px}
+  .why{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-top:22px}
+  .why h3{font-family:var(--disp);font-size:15px;color:var(--accent);letter-spacing:.4px;margin-bottom:12px;text-transform:uppercase}
+  .why ul{list-style:none;margin:0}
+  .why li{position:relative;padding-left:22px;margin-bottom:11px;font-size:14.5px;line-height:1.55}
+  .why li::before{content:"▪";position:absolute;left:0;top:0;color:var(--accent)}
+  .index-box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 20px;margin-top:22px;columns:2;column-gap:34px}
+  .index-box a{display:block;text-decoration:none;color:var(--dim);font-size:13.5px;padding:4px 0;transition:.15s}
+  .index-box a:hover{color:var(--accent)}
+  .index-box a span{font-family:var(--mono);color:var(--faint);margin-right:8px}
+  .tbl-wrap{overflow-x:auto;margin:6px 0 8px}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);border-radius:10px;overflow:hidden}
+  th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--accent);color:#fff;font-family:var(--disp);font-weight:600;font-size:12px}
+  td.n,th.n{text-align:right;font-family:var(--mono)}
+  td.co{font-weight:600;color:var(--ink)}
+  tr:nth-child(even) td{background:var(--panel2)}
+  tr.hl td{background:rgba(14,124,153,.1)!important;font-weight:600}
+  .flag{font-family:var(--mono);font-size:9.5px;color:var(--amber);vertical-align:super}
+  .seg{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:13px;padding:18px 20px;margin:14px 0}
+  .seg h4{font-family:var(--disp);font-size:16px;margin-bottom:4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .seg h4 .share{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(14,124,153,.1);padding:2px 8px;border-radius:14px;font-weight:500}
+  .seg p{font-size:14px;margin-bottom:8px}.seg p:last-child{margin-bottom:0}
+  .flow{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0;font-size:14px}
+  .flow h4{margin-top:0}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px 20px}
+  .card.bull{border-top:3px solid var(--green)}.card.bear{border-top:3px solid var(--red)}
+  .card h3{font-family:var(--disp);font-size:16px;margin-bottom:10px}
+  .card.bull h3{color:var(--green)}.card.bear h3{color:var(--red)}
+  .card li{font-size:13.5px}
+  .risk{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:11px;padding:14px 18px;margin-bottom:12px}
+  .risk .rh{font-family:var(--disp);font-weight:600;font-size:14.5px;margin-bottom:5px;display:flex;gap:9px}
+  .risk .rn{color:var(--red);font-family:var(--mono);font-weight:600}
+  .risk p{font-size:13.5px;margin:0;color:var(--dim)}.risk p b{color:var(--ink)}
+  .verdict{background:linear-gradient(180deg,rgba(14,124,153,.09),var(--panel));border:1px solid var(--line);border-radius:13px;padding:18px 22px;margin-top:16px;font-size:15px;line-height:1.62}
+  .verify{background:var(--panel2);border:1px dashed var(--line);border-radius:12px;padding:16px 20px;margin-top:26px;font-size:13px;color:var(--dim)}
+  .verify b{color:var(--amber)}
+  .note{font-size:12px;color:var(--faint);font-style:italic;margin-top:6px}
+  footer{text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;padding:26px;letter-spacing:.5px;line-height:1.7}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}.hero .big{font-size:33px}nav.sub{display:none}.index-box{columns:1}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="back" href="index.html">← Hub</a>
+  <h1>Sedemac Mechatronics</h1><span class="tk">SEDEMAC IN · SEDE.BO</span>
+  <nav class="sub">
+    <a href="#overview">Overview</a><a href="#industry">Industry</a><a href="#tech">SLC Moat</a>
+    <a href="#model">Model</a><a href="#drivers">Drivers</a><a href="#compete">Competition</a>
+    <a href="#risks">Risks</a><a href="#peers">Peers</a><a href="#mgmt">Mgmt</a><a href="#financials">Financials</a><a href="#valuation">Valuation</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Equity Research · Auto Ancillaries · Tech-moat play</div>
+    <div class="big">Sedemac <span class="pop">Mechatronics</span></div>
+    <div class="sec-tag">India's rare in-house ECU tech house — sensorless-commutation control units for 2W/3W, gensets &amp; EVs · IIT-Bombay founded (2007)</div>
+    <div class="stats">
+      <div class="stat"><div class="v">₹1,978</div><div class="l">CMP (15 May 2026)</div></div>
+      <div class="stat"><div class="v">₹2,350</div><div class="l">I-Sec TP (Mar'27E) · +19%</div></div>
+      <div class="stat"><div class="v">BUY</div><div class="l">I-Sec rating (Initiating)</div></div>
+      <div class="stat"><div class="v">₹87bn</div><div class="l">Market cap (~US$0.9bn)</div></div>
+      <div class="stat"><div class="v">~41%</div><div class="l">Revenue CAGR FY25–28E</div></div>
+      <div class="stat"><div class="v">~70%</div><div class="l">PAT CAGR FY25–28E</div></div>
+      <div class="stat"><div class="v">81x / 38x</div><div class="l">P/E FY26E / FY28E</div></div>
+      <div class="stat"><div class="v">~33%</div><div class="l">RoE (FY27–28E)</div></div>
+    </div>
+
+    <div class="thesis"><b>The one-liner:</b> A rare Indian company that <b>designs its own control-intensive ECUs in-house</b> and owns a genuinely differentiated technology — <b>sensorless commutation (SLC)</b>, which strips the physical sensors out of motors and starter-generators to cut cost and lift reliability. It rides two structural waves (ISG adoption in petrol 2W/3W, and electrification) off a small base — but the book is <b>heavily concentrated (ISG ~64% of sales, TVS ~75%+ of customers)</b> and the stock already trades on tech-leader multiples.</div>
+
+    <div class="src"><b>Source:</b> This tab summarises <b>ICICI Securities' Initiating Coverage note (17 May 2026)</b>. The <b>BUY rating, ₹2,350 target and all FY26–30E estimates are I-Sec's</b>, built largely on CRISIL industry data and company disclosures — not independent projections. Treat forward numbers as one broker's base case.</div>
+
+    <div class="why">
+      <h3>Why Sedemac?</h3>
+      <ul>
+        <li><b>A real, ownable technology edge.</b> SLC (proprietary "inductance-tracking" algorithms) eliminates position sensors in motors/magnetos — fewer failure points, lower cost, and it works even in oil-immersed motorcycle magnetos where sensor-based rivals can't. Sedemac claims to be the <b>only player globally</b> to have validated this at scale.</li>
+        <li><b>In-house design = high entry barrier.</b> Unlike peers who licence or JV for the tech, Sedemac does all design/development itself and keeps full IP ownership — the founders are IIT-Bombay technocrats with a first-to-market track record (smart ignition, sensorless ISG, integrated ISG+EFI).</li>
+        <li><b>Two structural waves, off a small base.</b> ISG penetration in 2W is ~36% heading to ~50% by FY30, and Sedemac is gaining share within it (~35%→44%+). Separately, EV MCUs are a 43–45% industry CAGR opportunity where its SLC edge repeats.</li>
+        <li><b>Optionality in large new TAMs.</b> Power tools (US$4–5bn global), e-LCV (validated with Ashok Leyland), and eventually CV/PV — a TAM ladder I-Sec frames as US$125mn → US$12bn, with blue-sky beyond. Not in estimates yet.</li>
+        <li><b>The catch, stated plainly.</b> Extreme concentration (one product, one customer), import-dependent inputs, and a valuation (81x FY26E P/E) that already prices Sedemac as a tech leader. This is a quality-growth story you pay up for — the debate is diversification and execution.</li>
+      </ul>
+    </div>
+
+    <div class="index-box">
+      <a href="#overview"><span>01</span>Company Overview</a>
+      <a href="#industry"><span>02</span>Industry Context &amp; TAM</a>
+      <a href="#tech"><span>03</span>The SLC Moat</a>
+      <a href="#model"><span>04</span>Business Model — the segments</a>
+      <a href="#drivers"><span>05</span>Growth Drivers</a>
+      <a href="#compete"><span>06</span>Competitive Positioning</a>
+      <a href="#risks"><span>07</span>Key Risks</a>
+      <a href="#peers"><span>08</span>Peer Comparison</a>
+      <a href="#mgmt"><span>09</span>Management</a>
+      <a href="#financials"><span>10</span>Financial Summary</a>
+      <a href="#valuation"><span>11</span>Valuation &amp; Verdict</a>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section id="overview">
+    <div class="eyebrow">01</div>
+    <h2 class="sec">Company overview</h2>
+    <div class="sec-tag">A control-electronics tech house sitting between engine/motor makers and the OEM.</div>
+
+    <h3 class="sub">Business description</h3>
+    <p>Sedemac designs and manufactures <b>control-intensive, critical-to-the-application electronic control units (ECUs)</b> — the "brains" that govern ignition, fuel injection, starting/generation and motor control in vehicles and gensets. It is one of very few domestic players to develop such control technology fully <b>in-house</b>, retaining complete ownership of design and IP. Its differentiator across products is <b>sensorless commutation (SLC)</b> — proprietary algorithms that remove the physical position sensors rivals depend on.</p>
+    <ul>
+      <li><b>Origins:</b> spun out of a research group at <b>IIT-Bombay</b>; incorporated 2007–08 by four technocrats including Prof. Shashikanth Suryanarayanan. First mass-adopted product was "smart ignition" (2012); sensorless ISG launched 2018; integrated ISG+EFI in 2024.</li>
+      <li><b>Manufacturing:</b> four units at <b>Chakan, Pune</b> + two technical centres at Baner; ISO 9001 / IATF certified. ISG-equivalent capacity grew 2.47mn (Mar-23) → 3.99mn (Mar-25); utilisation ~76% (FY25) → <b>~93% (9MFY26)</b>.</li>
+      <li><b>Scale marker:</b> cumulative ISG / ISG+EFI / EFI ECU sales crossed the <b>10mn-unit mark in 2026</b>.</li>
+    </ul>
+
+    <h3 class="sub">Ownership (Mar-26)</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Holder</th><th class="n">Stake</th><th>Notes</th></tr>
+      <tr><td class="co">Promoters</td><td class="n">26.2%</td><td>Founder-technocrats (Suryanarayanan, Dixit, Sharma)</td></tr>
+      <tr><td class="co">Institutions</td><td class="n">46.5%</td><td>MFs 13.6% · FIs/Banks 27.7% · Insurance 2.7% · FIIs 2.5%</td></tr>
+      <tr><td class="co">Others / public</td><td class="n">27.3%</td><td>Free float ~37%</td></tr>
+    </table></div>
+  </section>
+
+  <!-- 02 -->
+  <section id="industry">
+    <div class="eyebrow">02</div>
+    <h2 class="sec">Industry context &amp; TAM</h2>
+    <div class="sec-tag">Two adoption curves — ISG in petrol 2W/3W, and electrification — plus a widening TAM ladder.</div>
+
+    <h3 class="sub">The TAM ladder</h3>
+    <p>I-Sec's core framing is that Sedemac has repeatedly grown its addressable market by pushing its control tech into new segments: <b>US$125mn (smart ignition) → US$2bn (genset controllers, sensorless ISG) → US$5bn (EFI, ISG+EFI, MCU/motors for EV) → US$12bn (power tools, e-LCV, ICE-CV)</b> — with a "blue-sky" US$60bn if it ever reaches passenger-vehicle subsystems. Each step reuses the same SLC/in-house-design capability.</p>
+
+    <h4 class="mini">Structural tailwinds</h4>
+    <ul>
+      <li><b>ISG penetration</b> in domestic 2W is ~36% (FY25) → expected ~50% by FY30 — driven by smoother/silent starts, idle start-stop and fuel-efficiency benefits. ISG market ~₹15.8–16.5bn (FY26E) → ₹30–31bn by FY31 (13–15% value CAGR).</li>
+      <li><b>Electrification</b> of 2W/3W: domestic EV MCU market seen growing 43–45% (volume) / 44–46% (value) CAGR over FY25–30 to ~₹44–45bn; EV motors 46–48% value CAGR to ₹63–65bn.</li>
+      <li><b>Emission norms</b> (BS-VI, CPCB IV+): 100% EFI adoption in Indian 2W/3W; electronic governing mandated in gensets — expanding the ECU content per vehicle/engine.</li>
+      <li><b>New segments:</b> global shift to cordless <b>power tools</b> (BLDC + controllers) is a US$4–5bn MCU opportunity; e-LCV electrification.</li>
+    </ul>
+    <h4 class="mini">Headwinds / what caps it</h4>
+    <ul>
+      <li><b>EFI (the 100%-penetrated base) grows slowly</b> — only 2–4% volume CAGR; the growth is in ISG and EV, not the mature core.</li>
+      <li><b>Import-dependent inputs</b> (semiconductors, PCBs) tie margins to global supply chains and the rupee.</li>
+      <li><b>Adoption timing risk</b> in EV MCU and power tools — large TAMs, but revenue is still nascent/under validation.</li>
+    </ul>
+  </section>
+
+  <!-- 03 -->
+  <section id="tech">
+    <div class="eyebrow">03</div>
+    <h2 class="sec">The SLC moat</h2>
+    <div class="sec-tag">Why "sensorless commutation" is the whole thesis in one idea.</div>
+    <div class="flow">
+      <h4 class="mini" style="margin-top:0">Sensors are the weak point — Sedemac removes them</h4>
+      <p style="margin-bottom:0">Motors and magnetos normally need <b>physical (Hall-effect) position sensors</b> to know where the rotor is so the electronics can time the current ("commutation"). Those sensors fail under heat, dust and oil — and add cost and bulk. Sedemac's <b>sensorless commutation</b> infers rotor position purely from <b>proprietary "inductance-tracking" algorithms</b> — no sensor at all. Result: <b>higher reliability (nothing to fail), lower cost, smaller footprint</b>, and — critically — it works in <b>oil-immersed motorcycle magnetos</b> where sensor-based ISG can't go (extending ISG from scooters to motorcycles). Sedemac claims to be the only player globally to have validated SLC at scale.</p>
+    </div>
+    <p>The same SLC capability travels across products — ISG, MCU for EVs, motors, and power-tool controllers — which is why one core competence keeps opening new TAMs. A second in-house edge: <b>rare-earth-magnet-free motors</b>, reducing dependence on imported critical materials. And by <b>integrating ISG+EFI into one ECU</b>, Sedemac lets OEMs cut part count, cost and packaging space — one of only a few firms worldwide (with Shindengen, Astemo) to offer integrated ISG+EFI, and the only one offering it sensorless.</p>
+  </section>
+
+  <!-- 04 -->
+  <section id="model">
+    <div class="eyebrow">04</div>
+    <h2 class="sec">Business model — the segments</h2>
+    <div class="sec-tag">One technology platform, sold into four distinct end-markets. FY25 revenue mix shown.</div>
+
+    <div class="seg">
+      <h4>1. ISG / EFI / ISG+EFI ECUs — ICE 2W/3W <span class="share">~68% of FY25 rev (~64% 9MFY26)</span></h4>
+      <p>The core: control units for petrol two- and three-wheelers. <b>ISG</b> lets the magneto act as both starter and generator (silent/quick starts, idle start-stop, better efficiency); <b>EFI</b> governs fuel injection (mandatory post-BS-VI); the <b>integrated ISG+EFI</b> combines both to save OEM cost and space. Sedemac holds <b>~35%+ share of the ISG ECU market</b>, competing with Shindengen and Denso (who mainly serve Japanese OEMs).</p>
+      <p><b>Customers:</b> TVS Motor (lead adopter, 65%+ of its volumes on ISG), Bajaj Auto (Freedom 125, Pulsar N125, 3Ws), Hero MotoCorp (Xoom). Segment revenue CAGR ~25% (FY26E–28E). This is the profit and share-gain engine — but also the concentration risk.</p>
+    </div>
+
+    <div class="seg">
+      <h4>2. Genset controllers &amp; genset EFI ECUs <span class="share">~12.5% of FY25 rev</span></h4>
+      <p>Controllers that auto-start gensets on power loss and manage electronic governing (eGov) — Sedemac claims to be the <b>first to integrate eGov within the controller (2014)</b>, and is the <b>largest supplier in India (~75–77% share)</b> and top-3 globally. It also supplies genset EFI ECUs (leveraging its 2W EFI scale) as CPCB IV+/Tier-4 norms push electronic fuel systems. <b>Customers:</b> Generac, Cummins, Kirloskar Oil Engines, Mahindra Powerol, DEIF. Domestic market well-penetrated; growth now leans on global share gains (~16% CAGR).</p>
+    </div>
+
+    <div class="seg">
+      <h4>3. Motor Control Units &amp; rare-earth-free motors — EV <span class="share">~1.5% of FY25 rev · fastest-growing</span></h4>
+      <p>MCUs control the electric powertrain in e2W/e3W/e-LCV/e-bikes. Sedemac's SLC-based MCU repeats the sensorless advantage; it also makes <b>rare-earth-magnet-free motors</b> (cutting import dependence). E3W OEMs (Bajaj, TVSL) have started using its MCUs; <b>TVSL is validating the E2W version</b>. Off a tiny base, I-Sec models ~86% CAGR (FY26E–28E) — the key diversification lever. Competes with Sterling-GTake, Bosch, Vitesco, Varroc.</p>
+    </div>
+
+    <div class="seg">
+      <h4>4. Newer segments — optionality <span class="share">not yet in estimates</span></h4>
+      <p><b>Power tools</b> (US$4–5bn global MCU TAM; in advanced discussions with global players), <b>e-LCV</b> (product validated with Ashok Leyland), and eventually <b>ICE-CV and passenger-vehicle subsystems</b> (blue-sky). These validate the "keep scaling the tech into new TAMs" thesis but are upside, not base-case revenue. Plus ~18% "other products" in the FY25 mix.</p>
+    </div>
+
+    <div class="flow">
+      <h4 class="mini" style="margin-top:0">The financial shape</h4>
+      <p style="margin-bottom:0">Volume/revenue is modelled at ~35%/41% CAGR (FY25–28E); <b>EBITDA margin rises ~260bps to ~21%</b> on operating leverage and richer mix; <b>PAT ~70% CAGR</b> as leverage drops through. Capex intensity is low, so the model throws off strong cash — I-Sec sees ~₹5.8bn OCF and ~₹3.5bn FCF over FY26–28E and a <b>net-cash balance sheet by FY28</b>. Return ratios (RoE) average 30%+.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section id="drivers">
+    <div class="eyebrow">05</div>
+    <h2 class="sec">Growth drivers</h2>
+    <div class="sec-tag">Penetration × share gain × new segments.</div>
+    <ul>
+      <li><b>ISG penetration ramp</b> — 2W ISG from ~36% to ~50% by FY30, as Bajaj &amp; HMCL follow TVS in adopting it across more models.</li>
+      <li><b>Share gains within ISG</b> — Sedemac's SLC edge and limited competition (Shindengen/Denso serve Japanese OEMs) take its share from ~35% toward ~44%+ by FY28E.</li>
+      <li><b>Integrated ISG+EFI</b> — one ECU, fewer parts, lower OEM cost/space → drives both adoption and content per vehicle.</li>
+      <li><b>EV MCU adoption</b> — already in e3W (Bajaj, TVSL); E2W under TVSL validation — the big medium-term diversifier.</li>
+      <li><b>New-TAM options</b> — power tools, e-LCV (Ashok Leyland), CV — large addressable markets, upside to estimates.</li>
+      <li><b>Operating leverage</b> — low capex intensity + rising utilisation (93% at 9MFY26) converts revenue growth into margin and RoE expansion.</li>
+    </ul>
+  </section>
+
+  <!-- 06 -->
+  <section id="compete">
+    <div class="eyebrow">06</div>
+    <h2 class="sec">Competitive positioning</h2>
+    <div class="sec-tag">In-house tech ownership vs. licence/JV — Sedemac's "right to win" by segment.</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Segment</th><th>Position</th><th>Right to win</th><th>Key rivals</th></tr>
+      <tr><td class="co">ISG / EFI / ISG+EFI (2W/3W)</td><td>~35%+ India share</td><td>First-mover + only sensorless (SLC)</td><td>Shindengen, Denso</td></tr>
+      <tr><td class="co">Genset controllers</td><td>#1 India (~75%), top-3 global</td><td>Integrated eGov, scale, quality</td><td>DeepSea, SmartGen, ComAp, Datakom</td></tr>
+      <tr><td class="co">MCU (E2W/E3W, e-bikes)</td><td>Recently started</td><td>SLC differentiation</td><td>Sterling-GTake, Bosch, Vitesco, Varroc</td></tr>
+      <tr><td class="co">Motors (rare-earth-free)</td><td>Yet to commence</td><td>Only player offering rare-earth-free</td><td>—</td></tr>
+    </table></div>
+    <p>The structural point: rivals largely <b>source technology (JV/licence)</b>; Sedemac <b>owns the full design stack in-house</b>. That, plus the sensorless differentiation and a decade-plus first-mover record, is the barrier to entry — hard to replicate quickly, and it compounds as the tech is reused across new segments.</p>
+  </section>
+
+  <!-- 07 -->
+  <section id="risks">
+    <div class="eyebrow">07</div>
+    <h2 class="sec">Key risks</h2>
+    <div class="sec-tag">The three the note flags — plus the valuation caveat.</div>
+
+    <div class="risk"><div class="rh"><span class="rn">1</span>Product concentration — one segment carries the book</div>
+      <p>ISG / ISG+EFI ECUs were <b>~64% of revenue (9MFY26)</b>. Sustaining, let alone growing, depends on continued ISG adoption and Sedemac holding its share. <b>SLC-based MCU (EV) adoption is the key diversifier</b> — but it's still early and largely under validation.</p></div>
+
+    <div class="risk"><div class="rh"><span class="rn">2</span>Customer concentration — TVS is the franchise</div>
+      <p><b>TVS Motor is ~75%+ of revenue (9MFY26); top-3 customers ~91%, top-10 ~98%+.</b> Diversification hinges on Bajaj/HMCL scaling ISG and on new EV/power-tool customers. Any TVS sourcing shift would be material.</p></div>
+
+    <div class="risk"><div class="rh"><span class="rn">3</span>Import dependence &amp; supplier concentration</div>
+      <p>Critical inputs — <b>semiconductors and PCBs</b> — are largely imported, exposing Sedemac to global supply chains and <b>currency volatility</b>. Over <b>63%+ of raw materials come from the top-10 suppliers</b>. Semiconductor price spikes (as in FY22/23) directly hit margins.</p></div>
+
+    <div class="risk"><div class="rh"><span class="rn">4</span>Valuation leaves little margin for error</div>
+      <p>At <b>~81x FY26E / ~38x FY28E P/E</b>, the stock already prices in the growth and the diversification. Any slip in ISG penetration, share, or EV/new-segment ramp compresses both earnings and the multiple — the bear case values it at ₹1,075 (~30x a much lower FY28 EPS).</p></div>
+  </section>
+
+  <!-- 08 -->
+  <section id="peers">
+    <div class="eyebrow">08</div>
+    <h2 class="sec">Peer comparison</h2>
+    <div class="sec-tag">Auto-tech / ancillary peers (I-Sec, Bloomberg estimates, prices as of 15 May 2026).</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Company</th><th class="n">Rev CAGR<br>FY26–28E</th><th class="n">PAT CAGR<br>FY26–28E</th><th class="n">RoE<br>FY26E</th><th class="n">P/E<br>FY26E</th><th class="n">P/E<br>FY28E</th><th class="n">EV/EBITDA<br>FY28E</th></tr>
+      <tr class="hl"><td class="co">Sedemac</td><td class="n">27.8%</td><td class="n">46.0%</td><td class="n">30.3%</td><td class="n">82.1x</td><td class="n">38.5x</td><td class="n">22.2x</td></tr>
+      <tr><td class="co">Bosch*</td><td class="n">16.1%</td><td class="n">12.7%</td><td class="n">17.0%</td><td class="n">46.6x</td><td class="n">36.7x</td><td class="n">33.3x</td></tr>
+      <tr><td class="co">ZF CV India*</td><td class="n">25.8%</td><td class="n">31.8%</td><td class="n">14.0%</td><td class="n">44.8x</td><td class="n">25.8x</td><td class="n">16.1x</td></tr>
+      <tr><td class="co">Sona Comstar*</td><td class="n">14.0%</td><td class="n">19.4%</td><td class="n">11.2%</td><td class="n">44.3x</td><td class="n">31.1x</td><td class="n">19.4x</td></tr>
+      <tr><td class="co">Schaeffler India*</td><td class="n">13.1%</td><td class="n">14.1%</td><td class="n">21.3%</td><td class="n">45.9x</td><td class="n">35.2x</td><td class="n">22.1x</td></tr>
+      <tr><td class="co">Timken India*</td><td class="n">14.9%</td><td class="n">25.9%</td><td class="n">13.3%</td><td class="n">65.8x</td><td class="n">41.5x</td><td class="n">27.7x</td></tr>
+    </table></div>
+    <p class="note">The read: Sedemac carries the <b>highest growth (46% PAT CAGR) and highest RoE (~30%)</b> of the set, which is I-Sec's justification for a tech-leader multiple. On FY28E, its P/E converges toward peers as earnings compound. *Bloomberg estimates. Verify live before relying.</p>
+  </section>
+
+  <!-- 09 -->
+  <section id="mgmt">
+    <div class="eyebrow">09</div>
+    <h2 class="sec">Management</h2>
+    <div class="sec-tag">Founder-technocrats from IIT-Bombay; ~17 years each in control systems.</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Name</th><th>Role</th><th>Background</th></tr>
+      <tr><td class="co">Prof. Shashikanth Suryanarayanan</td><td>MD &amp; Promoter</td><td>B.Tech Mech (IIT-Madras), PhD (UC Berkeley); Associate Professor at IIT-Bombay (on leave); 17+ yrs in control</td></tr>
+      <tr><td class="co">Amit Dixit</td><td>Joint MD &amp; Promoter</td><td>Founding shareholder (joined Aug-08); PhD (IIT-Bombay) on servo-system parameter estimation; 17+ yrs</td></tr>
+      <tr><td class="co">Manish Sharma</td><td>Whole-Time Director &amp; COO</td><td>Founding shareholder; M.Tech Mech (IIT-Bombay); ex-Eaton India Engineering Center; 17+ yrs</td></tr>
+      <tr><td class="co">Poyni Bhatt</td><td>Chairperson &amp; Independent Director</td><td>Company Secretary; ex-CEO of SINE (IIT-Bombay incubator); ex-ICICI Securities; ~30 yrs</td></tr>
+      <tr><td class="co">Udo Wolz</td><td>Non-Executive Director</td><td>Dr-Ing (Karlsruhe); ex-Bosch, ex-DaimlerChrysler powertrain, ex-ZF; 20+ yrs auto</td></tr>
+    </table></div>
+    <p class="note">Founder-led, deep-engineering culture is central to the "in-house tech ownership" thesis. Namakal Parthasarathy (ex-Mindtree COO) also serves as an independent director.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="financials">
+    <div class="eyebrow">10</div>
+    <h2 class="sec">Financial summary</h2>
+    <div class="sec-tag">I-Sec estimates (INR mn, year ending March). FY25 actual; FY26–28 estimated.</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Metric</th><th class="n">FY25A</th><th class="n">FY26E</th><th class="n">FY27E</th><th class="n">FY28E</th></tr>
+      <tr><td class="co">Net revenue</td><td class="n">6,584</td><td class="n">11,270</td><td class="n">14,595</td><td class="n">18,412</td></tr>
+      <tr><td class="co">Revenue growth</td><td class="n">24.1%</td><td class="n">71.2%</td><td class="n">29.5%</td><td class="n">26.2%</td></tr>
+      <tr><td class="co">EBITDA</td><td class="n">1,209</td><td class="n">2,286</td><td class="n">2,994</td><td class="n">3,867</td></tr>
+      <tr><td class="co">EBITDA margin</td><td class="n">18.4%</td><td class="n">20.3%</td><td class="n">20.5%</td><td class="n">21.0%</td></tr>
+      <tr><td class="co">PAT</td><td class="n">470</td><td class="n">1,083</td><td class="n">1,677</td><td class="n">2,308</td></tr>
+      <tr><td class="co">EPS (INR)</td><td class="n">10.8</td><td class="n">24.4</td><td class="n">37.8</td><td class="n">52.0</td></tr>
+      <tr><td class="co">RoE</td><td class="n">22.0%</td><td class="n">30.3%</td><td class="n">33.8%</td><td class="n">33.2%</td></tr>
+      <tr><td class="co">RoCE</td><td class="n">16.6%</td><td class="n">26.7%</td><td class="n">30.6%</td><td class="n">30.9%</td></tr>
+      <tr><td class="co">P/E</td><td class="n">182.8x</td><td class="n">81.1x</td><td class="n">52.4x</td><td class="n">38.0x</td></tr>
+      <tr><td class="co">EV/EBITDA</td><td class="n">71.6x</td><td class="n">38.6x</td><td class="n">29.3x</td><td class="n">22.5x</td></tr>
+      <tr><td class="co">Net debt / equity</td><td class="n">0.2x</td><td class="n">0.1x</td><td class="n">0.0x</td><td class="n">(0.1)x</td></tr>
+    </table></div>
+    <p class="note">FY23–25 context: revenue ₹4.2bn→₹6.6bn; EBITDA margin expanded ~680bps to 18.4% (FY25) on richer mix and easing semiconductor prices; PAT grew ~134% CAGR (FY23–25) off a low base. Capex-light; strong OCF (~₹2.3bn over FY23–25).</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="valuation">
+    <div class="eyebrow">11</div>
+    <h2 class="sec">Valuation &amp; verdict</h2>
+    <div class="sec-tag">I-Sec: BUY, Mar'27E TP ₹2,350 — 45x Mar'28E EPS (1x PEG on ~46% EPS CAGR).</div>
+
+    <p>I-Sec argues that ~30% pre-tax RoCE/RoE, ~46% FY26–28E earnings CAGR and a net-cash balance sheet justify <b>technology-leader multiples</b>. It values Sedemac at <b>45x Mar'28E EPS of ₹52</b>, giving a base-case ₹2,350 (Mar'27E TP, ~19% upside). The probability-weighted fair value is ₹2,325.</p>
+
+    <div class="tbl-wrap"><table>
+      <tr><th>Scenario</th><th class="n">FY26–30E EPS CAGR</th><th class="n">FY28 P/E</th><th class="n">Value/share</th><th class="n">Prob.</th></tr>
+      <tr class="hl"><td class="co">Base</td><td class="n">37%</td><td class="n">45x</td><td class="n">₹2,350</td><td class="n">60%</td></tr>
+      <tr><td class="co">Bull</td><td class="n">65%</td><td class="n">50x</td><td class="n">₹4,300</td><td class="n">15%</td></tr>
+      <tr><td class="co">Bear</td><td class="n">20%</td><td class="n">30x</td><td class="n">₹1,075</td><td class="n">25%</td></tr>
+    </table></div>
+    <p class="note">Bull adds Japanese OEM sourcing, ~55% ISG penetration &amp; share, 15% EV MCU share and a power-tools win. Bear assumes ISG stalls at ~43%, EV share ~7%, no power-tools revenue, flat ~20% margin. Probability-adjusted ≈ ₹2,325.</p>
+
+    <div class="cards">
+      <div class="card bull">
+        <h3>▲ Bull case</h3>
+        <ul>
+          <li><b>Ownable tech</b> — only validated sensorless (SLC) player globally; full in-house IP.</li>
+          <li><b>Twin waves</b> — ISG penetration + electrification, both off small bases.</li>
+          <li><b>New TAMs</b> — power tools, e-LCV, CV — large upside not in estimates.</li>
+          <li><b>Quality financials</b> — ~30%+ RoE, ~70% PAT CAGR, net-cash, capex-light.</li>
+        </ul>
+      </div>
+      <div class="card bear">
+        <h3>▼ Bear case</h3>
+        <ul>
+          <li><b>Concentration</b> — ISG ~64% of sales; TVS ~75%+ of customers.</li>
+          <li><b>Diversification unproven</b> — EV MCU / power tools still early/validating.</li>
+          <li><b>Import + FX risk</b> — semis/PCBs imported; supplier-concentrated.</li>
+          <li><b>Priced for perfection</b> — ~81x FY26E P/E leaves little error margin.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="verdict"><b>The verdict (I-Sec's):</b> A genuine tech-moat compounder in a two-wave growth market, bought at tech-leader multiples. The upside is diversification — SLC-based EV MCUs and new TAMs (power tools, e-LCV) converting the one-product, one-customer profile into a broad platform. <b>If that plays out, the premium is earned; if ISG stalls or TVS de-concentrates before EV scales, the valuation unwinds fast.</b> Rating BUY, TP ₹2,350 (~19% upside) — a quality-growth call, not a value one.</div>
+
+    <div class="verify">
+      <b>What to re-verify before relying on this:</b> Everything forward here is <b>ICICI Securities' Initiating Coverage (17 May 2026)</b> — estimates, TP and rating are the broker's, built on CRISIL industry data and company disclosures, and <b>the stock had no listed price history at publication</b> (recent IPO). Cross-check the CMP/market cap and multiples live (they move daily), confirm the latest quarter's segment/customer mix and margins against the company's own filings, and note that power-tools/e-LCV upside is <b>explicitly not in the base numbers</b>. This is one sell-side view — triangulate with the RHP/annual report and at least one other source before acting.
+      <div class="note">Sources: ICICI Securities Institutional Equity Research — Sedemac Mechatronics Initiating Coverage (17 May 2026); CRISIL Intelligence; Company RHP &amp; disclosures; Bloomberg (peer data, 15 May 2026). Figures approximate — not investment advice.</div>
+    </div>
+  </section>
+
+</div>
+<footer>SEDEMAC MECHATRONICS — EQUITY RESEARCH · SUMMARY OF ICICI SECURITIES IC (17 MAY 2026)<br>For discussion only, not investment advice — verify all figures against primary sources.</footer>
+</body>
+</html>
