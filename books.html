@@ -22,6 +22,7 @@
 
   /* book card */
   .book{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px 30px;box-shadow:0 1px 3px rgba(22,32,59,.05)}
+  .book+.book{margin-top:28px}
   .book-head{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px}
   .book-tag{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--faint);text-transform:uppercase}
   .book-title{font-family:var(--disp);font-size:27px;font-weight:700;letter-spacing:-.01em;margin:9px 0 6px;line-height:1.2}
@@ -30,6 +31,7 @@
 
   /* core mantras */
   .mantras{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+  .mantras.four{grid-template-columns:repeat(2,1fr)}
   .mantra{background:linear-gradient(160deg,var(--cdim),rgba(124,58,237,.03));border:1px solid rgba(124,58,237,.2);border-radius:14px;padding:18px 16px}
   .mantra .n{font-family:var(--mono);font-size:12px;color:var(--c);font-weight:500}
   .mantra .t{font-family:var(--disp);font-size:15px;font-weight:600;margin:8px 0 6px;line-height:1.25}
@@ -52,7 +54,7 @@
   .principle .lbl{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--good);margin-bottom:8px}
   .principle p{font-family:var(--disp);font-size:16px;font-weight:500;line-height:1.5;color:var(--ink)}
 
-  @media(max-width:640px){.mantras{grid-template-columns:1fr}h1{font-size:36px}.book{padding:24px 20px}}
+  @media(max-width:640px){.mantras,.mantras.four{grid-template-columns:1fr}h1{font-size:36px}.book{padding:24px 20px}}
 </style>
 </head>
 <body>
@@ -144,6 +146,108 @@
     <div class="principle">
       <div class="lbl">Core Principle</div>
       <p>Find an exceptional business with a long and consistent track record, buy it at a fair price, and own it indefinitely.</p>
+    </div>
+  </article>
+
+  <article class="book">
+    <div class="book-head">
+      <div class="book-tag">Reading Notes · Investing</div>
+      <div class="book-title">Charlie Munger: The Complete Investor</div>
+      <div class="book-author">by <b>Tren Griffin</b> · the operating system behind Berkshire Hathaway</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">The Four Graham Fundamentals <span class="bar"></span></div>
+      <div class="mantras four">
+        <div class="mantra">
+          <div class="n">01</div>
+          <div class="t">A share is part-ownership of a business</div>
+          <div class="d">Value the business, not the ticker. If you can't value the business, you can't value the stock.</div>
+        </div>
+        <div class="mantra">
+          <div class="n">02</div>
+          <div class="t">Buy with a margin of safety</div>
+          <div class="d">A significant discount to intrinsic value is the protection against error and bad luck.</div>
+        </div>
+        <div class="mantra">
+          <div class="n">03</div>
+          <div class="t">Mr. Market is your servant, not your master</div>
+          <div class="d">His mood swings are the opportunity — never a source of instruction.</div>
+        </div>
+        <div class="mantra">
+          <div class="n">04</div>
+          <div class="t">Be rational, objective, dispassionate</div>
+          <div class="d">Temperament beats IQ. This is the hardest fundamental — and the one that powers the other three.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">Worldly Wisdom — the Latticework <span class="bar"></span></div>
+      <ul class="pts">
+        <li><b>Mental models</b> — <span>borrow the big ideas from psychology, maths, biology, engineering, economics; one discipline is never enough</span></li>
+        <li><b>The hammer problem</b> — <span>"to the man with only a hammer, everything looks like a nail" — single-model thinking distorts reality</span></li>
+        <li><b>Circle of competence</b> — <span>the size of the circle matters far less than knowing exactly where its edge is</span></li>
+        <li><b>Inversion</b> — <span>"invert, always invert" — avoiding stupidity is easier and more reliable than seeking brilliance</span></li>
+        <li><b>Incentives</b> — <span>"never, ever, think about something else when you should be thinking about the power of incentives"</span></li>
+        <li><b>Simplicity</b> — <span>take a simple idea and take it seriously; complexity is not a signal of rigour</span></li>
+      </ul>
+    </div>
+
+    <div class="sec avoid">
+      <div class="sec-h">Psychology of Misjudgment — Biases to Guard Against <span class="bar"></span></div>
+      <ul class="pts">
+        <li>Incentive-caused bias — <span>never take advice from someone paid to sell you the conclusion</span></li>
+        <li>Social proof — <span>the crowd is what creates mispricing; following it guarantees average results at best</span></li>
+        <li>Availability &amp; recency — <span>the vivid and recent gets overweighted; the base rate gets ignored</span></li>
+        <li>Deprival superreaction (loss aversion) — <span>losses hurt ~2x more than gains feel good, driving panic selling</span></li>
+        <li>Commitment &amp; consistency — <span>defending a past decision instead of updating on new evidence</span></li>
+        <li>Overconfidence &amp; overoptimism — <span>the more confident the forecast, the more suspicious you should be</span></li>
+        <li>Envy — <span>"the world is not driven by greed; it's driven by envy" — FOMO destroys more capital than fear</span></li>
+        <li>Lollapalooza effects — <span>biases rarely act alone; when several compound, behaviour goes badly wrong</span></li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">Moats — Where Durable Advantage Comes From <span class="bar"></span></div>
+      <ul class="pts">
+        <li><b>Supply-side economies of scale</b> — <span>unit costs fall as volume grows; scale itself deters entry</span></li>
+        <li><b>Demand-side network effects</b> — <span>the product gets more valuable as more people use it</span></li>
+        <li><b>Brand</b> — <span>a promise that lowers the customer's search cost and earns a price premium</span></li>
+        <li><b>Regulation</b> — <span>licences and rules that raise the cost of entry for challengers</span></li>
+        <li><b>Patents &amp; intellectual property</b> — <span>legally enforced exclusivity, while it lasts</span></li>
+        <li><b>Moats erode</b> — <span>capitalism attacks every excess return; test the moat continuously, never assume it</span></li>
+        <li><b>Quality over cheapness</b> — <span>Munger moved Buffett from Graham cigar-butts to paying a fair price for great businesses</span></li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">The Right Stuff — Temperament of the Investor <span class="bar"></span></div>
+      <ul class="pts">
+        <li><b>Patience</b> — <span>"sit on your ass investing" — the big money is in the waiting, not the buying and selling</span></li>
+        <li><b>Decisiveness</b> — <span>bets are rare, but when the odds are heavily in your favour, bet big</span></li>
+        <li><b>Courage</b> — <span>be aggressive exactly when others are fearful — that is when prices are wrong</span></li>
+        <li><b>Sensibly contrarian</b> — <span>you can't beat the crowd by being the crowd; but contrarian and right are different things</span></li>
+        <li><b>Honest self-assessment</b> — <span>recognise mistakes fast, rub your nose in them, extract the lesson</span></li>
+        <li><b>Independence</b> — <span>work from facts and reasoning, not consensus, forecasts or authority</span></li>
+      </ul>
+    </div>
+
+    <div class="sec avoid">
+      <div class="sec-h">Non-Negotiable Avoidances <span class="bar"></span></div>
+      <ul class="pts">
+        <li>Acting outside your circle of competence — <span>"I don't understand it" is a complete and honourable answer</span></li>
+        <li>Macro forecasting — <span>nobody reliably predicts rates, markets or economies; ignore those who claim to</span></li>
+        <li>Leverage — <span>the three ways a smart man goes broke: "liquor, ladies and leverage"</span></li>
+        <li>Overtrading and high fees — <span>activity and costs are the silent killers of compounding</span></li>
+        <li>Envy-driven decisions — <span>someone will always be getting richer faster than you; it does not matter</span></li>
+        <li>Trusting projections — <span>they are made by people with an interest in the outcome; study the record instead</span></li>
+      </ul>
+    </div>
+
+    <div class="principle">
+      <div class="lbl">Core Principle</div>
+      <p>"It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent."</p>
     </div>
   </article>
 </div>
